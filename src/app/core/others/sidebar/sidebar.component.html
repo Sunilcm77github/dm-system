@@ -1,0 +1,167 @@
+<div
+  [ngClass]="isOpen ? 'w-48' : 'w-0'"
+  class="min-h-screen bg-gradient-to-b from-blue-100 to-blue-600 dark:bg-gray-900 flex flex-col items-start p-4 space-y-4 shadow-2xl text-white transition-width duration-300 overflow-hidden"
+>
+  <!-- Logo and Toggle Button Section -->
+  <!-- <div class="flex items-center justify-between w-full mb-6">
+    <button
+      (click)="toggleSidebar()"
+      class="text-white text-2xl focus:outline-none"
+    >
+    
+      <span *ngIf="!isOpen">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
+      </span>
+      <span *ngIf="isOpen">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </span>
+    </button>
+  </div> -->
+
+  <div *ngIf="isOpen" class="flex flex-col space-y-2 w-full">
+    <!-- Files Button -->
+    <button
+      class="flex items-center space-x-2 py-2 px-3 w-full text-left text-white bg-blue-100 hover:bg-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 7h18M3 12h18m-6 5h6"
+        />
+      </svg>
+      <span class="text-md font-semibold">Files</span>
+    </button>
+
+    <!-- Store Button -->
+    <button
+      class="flex items-center space-x-2 py-2 px-3 w-full text-left text-white bg-blue-700 hover:bg-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20 13V6.5M4 20h16M5 8h14v4H5zM10 12h4M12 8h0m0 4h0"
+        />
+      </svg>
+      <span class="text-md font-semibold">Store</span>
+    </button>
+
+    <!-- Configs Button with Dropdown Toggle -->
+    <button
+      (click)="toggleConfigDropdown()"
+      class="flex items-center justify-between space-x-2 py-2 px-3 w-full text-left text-white bg-blue-700 hover:bg-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+    >
+      <div class="flex items-center space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 4h16v16H4zM2 6h20m-2 12H4"
+          />
+        </svg>
+        <span class="text-md font-semibold">Configs</span>
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          [attr.d]="isConfigDropdownOpen ? 'M19 9l-7 7-7-7' : 'M5 15l7-7 7 7'"
+        />
+      </svg>
+    </button>
+
+    <!-- Configs Dropdown Menu -->
+    <div *ngIf="isConfigDropdownOpen" class="flex flex-col space-y-1 ml-4">
+      <button
+        class="flex items-center space-x-2 py-1 px-3 w-full text-left text-white bg-blue-600 hover:bg-blue-500 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 20l4-4-4-4m4 4H4m8 4v-8"
+          />
+        </svg>
+        <span class="text-sm font-semibold">Roles</span>
+      </button>
+      <button
+        class="flex items-center space-x-2 py-1 px-3 w-full text-left text-white bg-blue-600 hover:bg-blue-500 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 14v6H8v-6m4-6v6m4-10h-8m8 8H4m8 4H4"
+          />
+        </svg>
+        <span class="text-sm font-semibold">Users</span>
+      </button>
+    </div>
+  </div>
+</div>
