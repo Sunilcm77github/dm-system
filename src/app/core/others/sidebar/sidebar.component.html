@@ -48,6 +48,7 @@
     <!-- Files Button -->
     <button
       class="flex items-center space-x-2 py-2 px-3 w-full text-left text-white bg-blue-100 hover:bg-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+      (click)="onFileClick()"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +70,7 @@
     <!-- Store Button -->
     <button
       class="flex items-center space-x-2 py-2 px-3 w-full text-left text-white bg-blue-700 hover:bg-blue-500 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+      (click)="onStoreClick()"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -126,6 +128,7 @@
     <div *ngIf="isConfigDropdownOpen" class="flex flex-col space-y-1 ml-4">
       <button
         class="flex items-center space-x-2 py-1 px-3 w-full text-left text-white bg-blue-600 hover:bg-blue-500 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+        (click)="onRoleClick()"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -145,6 +148,7 @@
       </button>
       <button
         class="flex items-center space-x-2 py-1 px-3 w-full text-left text-white bg-blue-600 hover:bg-blue-500 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+        (click)="onUserClick()"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
