@@ -1,13 +1,14 @@
-<div>
-  <div class="sticky">
+<div class="h-screen flex flex-col">
+  <div class="sticky top-0 z-10">
     <app-navbar></app-navbar>
   </div>
-  <div class="flex flex-row">
-    <div>
+  <div class="flex flex-1">
+    <div class="w-[12%] bg-gray-100">
       <app-sidebar></app-sidebar>
     </div>
-    <div>
-      <router-outlet />
+
+    <div class="flex-1 p-4">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
