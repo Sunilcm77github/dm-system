@@ -39,8 +39,8 @@ export class DepartmentGridComponent {
       maxWidth: 110,
     },
     {
-      headerName: 'Role Name',
-      field: 'role',
+      headerName: 'Department Name',
+      field: 'department',
       headerClass: ' text-center',
     },
     {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NewDepartmentBtnComponent } from "../../core/components/departments/new-department-btn/new-department-btn.component";
-import { DepartmentGridComponent } from "../../core/components/departments/department-grid/department-grid.component";
+import { NewDepartmentBtnComponent } from "../../../core/components/departments/new-department-btn/new-department-btn.component";
+import { DepartmentGridComponent } from "../../../core/components/departments/department-grid/department-grid.component";
 
 @Component({
   selector: 'app-departments',

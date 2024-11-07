@@ -8,9 +8,9 @@ import { UserGridOptionsComponent } from '../user-grid-options/user-grid-options
 @Component({
   selector: 'app-user-grid',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, AgGridModule],
+  imports: [CommonModule, AgGridModule],
   templateUrl: './user-grid.component.html',
-  styleUrls: ['./user-grid.component.scss']
+  styleUrls: ['./user-grid.component.scss'],
 })
 export class UserGridComponent implements OnInit {
   students: any;
@@ -30,16 +30,21 @@ export class UserGridComponent implements OnInit {
     },
     {
       headerName: 'User Name',
-      field: 'role',
+      field: 'userName',
       headerClass: ' text-center',
     },
     {
       headerName: 'Mobile No',
-      field: 'description',
+      field: 'mobileNumber',
       headerClass: 'text-center',
     },
     {
       headerName: 'Email',
+      field: 'email',
+      headerClass: 'text-center',
+    },
+    {
+      headerName: 'Created At',
       valueGetter: () => new Date().toLocaleDateString(),
       headerClass: 'text-center',
       cellClass: ' text-center',

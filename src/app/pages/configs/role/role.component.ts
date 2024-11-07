@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NewRoleBtnComponent } from '../../core/components/role/new-role-btn/new-role-btn.component';
+import { NewRoleBtnComponent } from '../../../core/components/role/new-role-btn/new-role-btn.component';
 import { CommonModule } from '@angular/common';
-import { RoleGridComponent } from '../../core/components/role/role-grid/role-grid.component';
+import { RoleGridComponent } from '../../../core/components/role/role-grid/role-grid.component';
 
 @Component({
   selector: 'app-role',

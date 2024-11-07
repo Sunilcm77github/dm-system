@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NewUserBtnComponent } from "../../core/components/user/new-user-btn/new-user-btn.component";
-import { UserGridComponent } from "../../core/components/user/user-grid/user-grid.component";
+import { NewUserBtnComponent } from "../../../core/components/user/new-user-btn/new-user-btn.component";
+import { UserGridComponent } from "../../../core/components/user/user-grid/user-grid.component";
 
 
 @Component({
