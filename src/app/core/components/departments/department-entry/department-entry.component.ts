@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../services/departments/departments.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../models/material.model';
 
 @Component({
   selector: 'app-department-entry',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   templateUrl: './department-entry.component.html',
   styleUrl: './department-entry.component.scss',
 })
@@ -31,10 +39,10 @@ export class DepartmentEntryComponent {
   onSave(): void {
     if (this.roleForm.valid) {
       const payload = this.data();
-      this.departmentService.createRole(payload).subscribe({
+      this.departmentService.createDepartment(payload).subscribe({
         next: (response) => {
           console.log('role created successfully', response);
-          this.departmentService.loadRole();
+          this.departmentService.loadDepartment();
         },
         error: (error) => {
           console.error('Error creating class', error);
