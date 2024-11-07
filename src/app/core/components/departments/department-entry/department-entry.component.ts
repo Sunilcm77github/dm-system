@@ -1,31 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { MaterialModule } from '../../../models/material.model';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { RoleService } from '../../../services/role/role.service';
 import { Router } from '@angular/router';
+import { DepartmentsService } from '../../../services/departments/departments.service';
 
 @Component({
-  selector: 'app-role-entry',
+  selector: 'app-department-entry',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
-  templateUrl: './role-entry.component.html',
-  styleUrl: './role-entry.component.scss',
+  imports: [],
+  templateUrl: './department-entry.component.html',
+  styleUrl: './department-entry.component.scss',
 })
-export class RoleEntryComponent implements OnInit {
+export class DepartmentEntryComponent {
   roleForm: FormGroup;
 
   constructor(
-    private dialogRef: MatDialogRef<RoleEntryComponent>,
+    private dialogRef: MatDialogRef<DepartmentEntryComponent>,
     private fb: FormBuilder,
-    private roleService: RoleService,
+    private departmentService: DepartmentsService,
     private router: Router
   ) {
     this.roleForm = this.fb.group({
@@ -34,17 +26,15 @@ export class RoleEntryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   onSave(): void {
     if (this.roleForm.valid) {
       const payload = this.data();
-      this.roleService.createRole(payload).subscribe({
+      this.departmentService.createRole(payload).subscribe({
         next: (response) => {
           console.log('role created successfully', response);
-          this.roleService.loadRole();
+          this.departmentService.loadRole();
         },
         error: (error) => {
           console.error('Error creating class', error);

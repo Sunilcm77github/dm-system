@@ -35,4 +35,8 @@ export class SidebarComponent {
   onRoleClick() {
     this.router.navigate(['/role']);
   }
+
+  onDepartmentsClick() {
+    this.router.navigate(['/departments']);
+  }
 }

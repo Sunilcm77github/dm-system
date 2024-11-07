@@ -1,36 +1,35 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
 import { ColDef } from 'ag-grid-community';
-import { RoleGridOptionsComponent } from '../role-grid-options/role-grid-options.component';
-import { RoleService } from '../../../services/role/role.service';
+import { DepartmentGridOptionsComponent } from '../department-grid-options/department-grid-options.component';
 
 @Component({
-  selector: 'app-role-grid',
+  selector: 'app-department-grid',
   standalone: true,
   imports: [CommonModule, AgGridModule],
-  templateUrl: './role-grid.component.html',
-  styleUrl: './role-grid.component.scss',
+  templateUrl: './department-grid.component.html',
+  styleUrl: './department-grid.component.scss',
 })
-export class RoleGridComponent implements OnInit {
+export class DepartmentGridComponent {
   roles: any;
   loading = true;
   error: string | null = null;
 
-  constructor(private http: HttpClient, private roleService: RoleService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadRoles();
+    // this.loadDepartments();
   }
 
-  loadRoles() {
-    this.roleService.loadRole().subscribe({
-      next: (role: any) => {
-        this.roles = role;
-      },
-    });
-  }
+  // loadDepartments() {
+  //   this.departmentService.loadRole().subscribe({
+  //     next: (role: any) => {
+  //       this.roles = role;
+  //     },
+  //   });
+  // }
 
   columnDefs: ColDef[] = [
     {
@@ -58,7 +57,7 @@ export class RoleGridComponent implements OnInit {
     {
       headerName: 'Options',
       field: 'options',
-      cellRenderer: RoleGridOptionsComponent,
+      cellRenderer: DepartmentGridOptionsComponent,
       headerClass: 'text-center',
       cellClass: ' text-center',
     },

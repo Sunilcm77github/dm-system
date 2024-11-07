@@ -5,8 +5,14 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './role-grid-options.component.html',
-  styleUrl: './role-grid-options.component.scss'
+  styleUrl: './role-grid-options.component.scss',
 })
 export class RoleGridOptionsComponent {
+  agInit(params: any): void {
+    // Optional initialization logic
+  }
 
+  refresh(params: any): boolean {
+    return false;
+  }
 }
