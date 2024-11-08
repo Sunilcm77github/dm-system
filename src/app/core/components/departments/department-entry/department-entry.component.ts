@@ -20,7 +20,7 @@ import { MaterialModule } from '../../../models/material.model';
   styleUrl: './department-entry.component.scss',
 })
 export class DepartmentEntryComponent {
-  roleForm: FormGroup;
+  departmentForm: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<DepartmentEntryComponent>,
@@ -28,8 +28,8 @@ export class DepartmentEntryComponent {
     private departmentService: DepartmentsService,
     private router: Router
   ) {
-    this.roleForm = this.fb.group({
-      role: ['', Validators.required],
+    this.departmentForm = this.fb.group({
+      department: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
@@ -37,7 +37,7 @@ export class DepartmentEntryComponent {
   ngOnInit(): void {}
 
   onSave(): void {
-    if (this.roleForm.valid) {
+    if (this.departmentForm.valid) {
       const payload = this.data();
       this.departmentService.createDepartment(payload).subscribe({
         next: (response) => {
@@ -49,7 +49,7 @@ export class DepartmentEntryComponent {
         },
       });
 
-      this.dialogRef.close(this.roleForm.value);
+      this.dialogRef.close(this.departmentForm.value);
     } else {
       this.markAllAsTouched();
     }
@@ -60,13 +60,13 @@ export class DepartmentEntryComponent {
   }
 
   markAllAsTouched() {
-    this.roleForm.markAllAsTouched();
+    this.departmentForm.markAllAsTouched();
   }
 
   data() {
-    const { role, description } = this.roleForm.value;
+    const { department, description } = this.departmentForm.value;
     return {
-      role,
+      department,
       description,
     };
   }

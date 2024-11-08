@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './user-grid-options.component.html',
-  styleUrl: './user-grid-options.component.scss'
+  styleUrl: './user-grid-options.component.scss',
 })
 export class UserGridOptionsComponent {
-
+  agInit() {}
 }

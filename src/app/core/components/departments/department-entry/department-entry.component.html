@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Department Configuration</h2>
 <div mat-dialog-content>
-  <form [formGroup]="roleForm">
+  <form [formGroup]="departmentForm">
     <div class="mb-3">
       <label class="block text-sm font-medium text-gray-500" for="settingsName">
         Department Name
@@ -37,7 +37,7 @@
     mat-button
     color="primary"
     (click)="onSave()"
-    [disabled]="roleForm.invalid"
+    [disabled]="departmentForm.invalid"
   >
     Save
   </button>

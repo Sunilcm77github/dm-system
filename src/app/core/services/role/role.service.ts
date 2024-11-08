@@ -17,4 +17,8 @@ export class RoleService {
   createRole(data: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/v1/role/create', data);
   }
+
+  deleteRole(role_id: string): Observable<any> {
+    return this.http.delete(`http://127.0.0.1:8000/api/v1/role/${role_id}`);
+  }
 }

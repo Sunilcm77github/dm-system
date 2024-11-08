@@ -1,33 +1,38 @@
 <h2 mat-dialog-title>User Configuration</h2>
 <div mat-dialog-content>
-  <form [formGroup]="userForm">
-    <div class="mb-3">
-      <label class="block text-sm font-medium text-gray-500" for="role">
-        User Name
-        <span class="text-red-500">*</span>
-      </label>
-      <input
-        id="role"
-        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
-        placeholder="Enter User Name"
-        formControlName="role"
-        type="text"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label class="block text-sm font-medium text-gray-500" for="description">
-        Mobile No
-        <span class="text-red-500">*</span>
-      </label>
-      <input
-        id="description"
-        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
-        placeholder="Enter Description"
-        formControlName="description"
-        type="text"
-        required
-      />
+  <form [formGroup]="userForm" class="">
+    <div class="mb-3 flex grid-cols-2 gap-4">
+      <div class="w-full">
+        <label class="block text-sm font-medium text-gray-500" for="userName">
+          User Name
+          <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="userName"
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
+          placeholder="Enter User Name"
+          formControlName="userName"
+          type="text"
+          required
+        />
+      </div>
+      <div class="w-full">
+        <label
+          class="block text-sm font-medium text-gray-500"
+          for="mobileNumber"
+        >
+          Mobile Number
+          <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="mobileNumber"
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
+          placeholder="Enter Mobile Number"
+          formControlName="mobileNumber"
+          type="text"
+          required
+        />
+      </div>
     </div>
     <div class="mb-3">
       <label class="block text-sm font-medium text-gray-500" for="email">
@@ -43,16 +48,62 @@
         required
       />
     </div>
+
+    <div class="mb-3 flex grid-cols-2 gap-4">
+      <div class="w-full">
+        <label
+          class="block text-sm font-medium text-gray-500"
+          for="departments"
+        >
+          Department
+          <span class="text-red-500">*</span>
+        </label>
+        <select
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
+          formControlName="departments"
+          placeholder="Select Department"
+          required
+        >
+          <option
+            *ngFor="let department of departments"
+            [value]="department.id"
+          >
+            {{ department.department }}
+          </option>
+        </select>
+      </div>
+      <div class="w-full">
+        <label class="block text-sm font-medium text-gray-500" for="roles">
+          Role
+          <span class="text-red-500">*</span>
+        </label>
+        <select
+          formControlName="roles"
+          class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-3"
+          placeholder="Select Role"
+          required
+        >
+          <option
+            aria-placeholder="select role"
+            class="py-2 px-3 rounded-md border hover:border-blue-800"
+            *ngFor="let role of roles"
+            [value]="role.id"
+          >
+            {{ role.role }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button
+        mat-button
+        color="primary"
+        (click)="onSave()"
+        [disabled]="userForm.invalid"
+      >
+        Save
+      </button>
+    </div>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button
-    mat-button
-    color="primary"
-    (click)="onSave()"
-    [disabled]="userForm.invalid"
-  >
-    Save
-  </button>
 </div>

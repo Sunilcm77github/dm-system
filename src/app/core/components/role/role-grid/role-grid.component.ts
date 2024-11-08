@@ -14,7 +14,7 @@ import { RoleService } from '../../../services/role/role.service';
   styleUrl: './role-grid.component.scss',
 })
 export class RoleGridComponent implements OnInit {
-  roles: any;
+  roles: { role_id: string; role: string; description: string }[] = [];
   loading = true;
   error: string | null = null;
 
@@ -26,8 +26,36 @@ export class RoleGridComponent implements OnInit {
 
   loadRoles() {
     this.roleService.loadRole().subscribe({
-      next: (role: any) => {
-        this.roles = role;
+      next: (roles: any) => {
+        console.log('Fetched roles:', roles); // Log the fetched roles
+        this.roles = roles;
+      },
+      error: (err) => {
+        console.error('Failed to load roles:', err);
+      },
+    });
+  }
+
+  deleteRole(roleId: any, rowIndex: number) {
+    // Extract the role ID from the object
+    const id = roleId._id ? roleId._id.$oid : roleId; // Ensure to use $oid if it's an object
+
+    console.log('Deleting role with ID:', id); // Log the ID to confirm
+
+    if (!id) {
+      console.error('No valid role ID found');
+      return;
+    }
+
+    this.roleService.deleteRole(id).subscribe({
+      next: () => {
+        // Remove the row from the grid after successful deletion
+        this.roles.splice(rowIndex, 1);
+        this.roles = [...this.roles]; // Refresh the grid by updating the array reference
+      },
+      error: (err) => {
+        console.error('Failed to delete role:', err);
+        this.error = 'Failed to delete role';
       },
     });
   }
@@ -58,9 +86,20 @@ export class RoleGridComponent implements OnInit {
     {
       headerName: 'Options',
       field: 'options',
-      cellRenderer: RoleGridOptionsComponent,
-      headerClass: 'text-center',
-      cellClass: ' text-center',
+      cellClass: 'text-center',
+      cellRenderer: (params: any) => {
+        const deleteIcon = document.createElement('i');
+        deleteIcon.className = 'fas fa-trash text-red-500';
+        deleteIcon.style.cursor = 'pointer';
+        deleteIcon.style.marginRight = '10px';
+
+        deleteIcon.addEventListener('click', () => {
+          const role = this.roles[params.node.rowIndex];
+          this.deleteRole(role, params.node.rowIndex);
+        });
+
+        return deleteIcon;
+      },
     },
   ];
 

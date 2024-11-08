@@ -14,7 +14,7 @@ export class NewUserBtnComponent {
 
   openUserDialog(): void {
     const dialogRef = this.dialog.open(UserEntryComponent, {
-      width: '400px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
